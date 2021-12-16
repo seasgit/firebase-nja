@@ -30,16 +30,19 @@ const db = getFirestore(app)
 // référence d'une collection
 const colRef = collection(db, 'books')
 
+
+const list =  document.querySelector('.list')
+let books;
 // Subscription à un écouteur de tout changement dans la collection
  onSnapshot( colRef, (snapshot) => {
-    let books = []
+    books = []
     snapshot.docs.forEach(doc => {
         books.push({
             ...doc.data(),
             id: doc.id
         });
     })
-    console.log(books);
+   dolist()
  })
 
 // adding docs
@@ -51,7 +54,6 @@ addBookForm.addEventListener('submit', (e) => {
         author: addBookForm.author.value
     }).then(()=> {
         addBookForm.reset()
-        // getDocs(colRef)  ? not ok
     })
 });
 
@@ -66,3 +68,13 @@ deleteBookForm.addEventListener('submit', (e) => {
             deleteBookForm.reset()
         })
 });
+
+
+const dolist =  () => {
+    list.innerHTML =""
+    books.map( b => {
+        list.innerHTML += `<hr>
+                            <h3>${b.title}</h3>
+                            <p class='text-xs'>${b.author} | ${b.id }</p>`
+    })
+}

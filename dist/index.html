@@ -10,25 +10,26 @@
 
 <body>
     <h1 class='text-4xl my-10 text-center'>Firebase Lesson 5 : add and delete </h1>
-    <div class="container max-w-md mx-auto">
-        <form class="add">
-            <label for="title">Title:</label>
-            <input type="text" name="title" required class='border'><br>
-            <label for="author">Author:</label>
-            <input type="text" name="author" required class='border my-5'><br>
-    
-            <button class='bg-green-300 p-2 rounded'>add a new book</button>
-        </form>
-    
-        <hr class="my-5">
-        <form class="delete">
-            <label for="id">Document id:</label>
-            <input type="text" name="id" required class='border my-5'><br>
-    
-            <button class='bg-yellow-400 p-2 rounded'>delete a book</button>
-        </form>
+    <div class="container w-5/6 mx-auto flex justify-center">
+        <section>
+            <form class="add">
+                <label for="title">Title:</label>
+                <input type="text" name="title" required class='border'>
+                <label for="author">Author:</label>
+                <input type="text" name="author" required class='border my-5'>
+        
+                <button class='bg-green-300 p-2 rounded'>add a new book</button>
+            </form>
 
+            <form class="delete">
+                <label for="id">Document id:</label>
+                <input type="text" name="id" required class='border my-5'>
+        
+                <button class='bg-yellow-400 p-2 rounded'>delete a book</button>
+            </form>
+        </section>
     </div>
+
     <h1 class='text-4xl my-10 text-center'>Liste </h1>
     <div class="container max-w-md mx-auto">
         <div class="list"></div>
