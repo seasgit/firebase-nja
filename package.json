@@ -1,0 +1,25 @@
+{
+  "name": "firebase-dojo",
+  "version": "1.0.0",
+  "description": "https://github.com/iamshaunjp/Getting-Started-with-Firebase-9",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seasgit/firebase-nja.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seasgit/firebase-nja/issues"
+  },
+  "homepage": "https://github.com/seasgit/firebase-nja#readme",
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
