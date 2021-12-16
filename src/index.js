@@ -5,10 +5,10 @@ import {
 import {
     getFirestore,
     collection,
-    getDocs,
     addDoc,
     deleteDoc,
-    doc
+    doc,
+    onSnapshot
 } from 'firebase/firestore'
 
 
@@ -30,30 +30,17 @@ const db = getFirestore(app)
 // référence d'une collection
 const colRef = collection(db, 'books')
 
-// get collection data
-/*
-    NB : doc donne 2 types d'information qui nous inté<rressent.
-    1. l'id du doc
-    2. les données
-
-    On utilise le spread operator pour concaténer dans un objet l'objet data et la clé/valeur id
-
-*/
-getDocs(colRef)
-    .then((snapshots) => {
-        let books = []
-        snapshots.docs.forEach(doc => {
-            books.push({
-                ...doc.data(),
-                id: doc.id
-            });
-        })
-        console.log(books);
+// Subscription à un écouteur de tout changement dans la collection
+ onSnapshot( colRef, (snapshot) => {
+    let books = []
+    snapshot.docs.forEach(doc => {
+        books.push({
+            ...doc.data(),
+            id: doc.id
+        });
     })
-    .catch(err => {
-        console.log(err.message)
-    })
-
+    console.log(books);
+ })
 
 // adding docs
 const addBookForm = document.querySelector('.add')
