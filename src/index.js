@@ -1,12 +1,14 @@
-
 import {
     initializeApp
 } from "firebase/app";
 
-import  {
+import {
     getFirestore,
     collection,
-    getDocs
+    getDocs,
+    addDoc,
+    deleteDoc,
+    doc
 } from 'firebase/firestore'
 
 
@@ -26,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
 // référence d'une collection
-const colRef =  collection(db, 'books')
+const colRef = collection(db, 'books')
 
 // get collection data
 /*
@@ -40,11 +42,40 @@ const colRef =  collection(db, 'books')
 getDocs(colRef)
     .then((snapshots) => {
         let books = []
-        snapshots.docs.forEach( doc => {
-            books.push({...doc.data(), id:doc.id});
+        snapshots.docs.forEach(doc => {
+            books.push({
+                ...doc.data(),
+                id: doc.id
+            });
         })
         console.log(books);
     })
     .catch(err => {
         console.log(err.message)
     })
+
+
+// adding docs
+const addBookForm = document.querySelector('.add')
+addBookForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    addDoc(colRef, {
+        title: addBookForm.title.value,
+        author: addBookForm.author.value
+    }).then(()=> {
+        addBookForm.reset()
+        // getDocs(colRef)  ? not ok
+    })
+});
+
+// deleting docs
+const deleteBookForm = document.querySelector('.delete')
+deleteBookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const docRef = doc(db, 'books', deleteBookForm.id.value)
+    // console.log(docRef);
+    deleteDoc(docRef)
+        .then(() => {
+            deleteBookForm.reset()
+        })
+});
