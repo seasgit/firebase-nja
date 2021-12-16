@@ -1,31 +1,20 @@
-# Firebase tutorial
+# Firebase tutorial 2
 
 ## Ressources
 ### voir chapitres dans branches
 https://github.com/iamshaunjp/Getting-Started-with-Firebase-9
 
-## Structure de base
-- dossier  `/dist`
-- dossier `/src`
-## Install webpack
+## Firebase nouveau projet
+- Avoir un compte firebase
+- Création du projet `FB9nja`
+- Désactivation Google Analytics
+- Sélection web app __</>__ . 
+- Nom de l'app : `ninjapp` _(Firehosting non activé.)_
+### Accéder à la console
+- Sélection l'application et cliquer sur l'icone engrenage
+### Installation et configuration du SDK
 ```bash
-npm init -y
-#
-npm i webpack webpack-cli -D
+npm i firebase
 ```
-## Config webpack
-- Créer le fichier `/webpack.config.js`
-- Depuis la doc, copier le code de base et Customiser les path et noms de fichiers js 
-- ajoute un script d'exécution dans package.json
-```js
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
-  },
-```
-- run dans la console
-```bash
-npm run build
-```
-
-
+- Copier le code de l'onglet npm
+- Coller dans `src/index.js`
