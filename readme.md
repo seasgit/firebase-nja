@@ -1,4 +1,4 @@
-# Firebase tutorial 6, 7 - Requêtes
+# Firebase  - Requêtes
 
 - Dans les imports : `query` et `where`
 
