@@ -13,7 +13,8 @@ import {
     where,
     orderBy,
     serverTimestamp,
-    getDoc
+    getDoc,
+    updateDoc
 } from 'firebase/firestore'
 
 
@@ -102,4 +103,20 @@ const docRef = doc(db, 'books', 'cul4YjT17T6nCTctSz7p');
 // 2. susbcribe for any change of this doc
 onSnapshot( docRef , (doc) => {
     console.log(doc.data(), doc.id)
+})
+
+
+
+// updating doc
+const updateBookForm = document.querySelector('.update')
+updateBookForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+        const docRef = doc(db, 'books', updateBookForm.id.value)
+        
+        updateDoc(docRef, {
+            title: updateBookForm.title.value
+        })
+        .then(() => {
+            updateBookForm.reset()
+        })
 })
