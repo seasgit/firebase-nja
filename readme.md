@@ -1,10 +1,8 @@
-# Firebase tutorial 2
-
-## Ressources
+# Ressources
 ### voir chapitres dans branches
 https://github.com/iamshaunjp/Getting-Started-with-Firebase-9
 
-## Firebase nouveau projet
+# Firebase nouveau projet
 - Avoir un compte firebase
 - Création du projet `FB9nja`
 - Désactivation Google Analytics
