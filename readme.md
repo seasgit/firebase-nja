@@ -1,29 +1,22 @@
-# Firebase  - TimeStamp
+# Firebase  - get single book
 
+## imports 
+ ajouter `getDoc`
 
-## dans la console : FireStore
-- on remove la collection `Books`
-
-## dans le script index.js
-- Dans les imports : `serverTimeStamp` et `where`
-
+## script
+- Un test de lecture d'un livre
 ```js
-// référence d'un requête par date de création
-const q = query(colRef, orderBy('createdAt', 'desc'))
-
-
-// lors de la soumission on crée un enregistrement avec date de création
-
-    addDoc(colRef, {
-        title: addBookForm.title.value,
-        author: addBookForm.author.value,
-        createdAt: serverTimestamp()
-
- ```
-
- ## A l'exécution
- - par défaut => liste vide
- - Ajouter un livre => Il apparaît dans la liste
- - ET dans Firestore
- ![image](./captures/book_date.png)
-
+// même technique que pour delete
+const docRef = doc(db, 'books', 'cul4YjT17T6nCTctSz7p');
+// test dans la console
+getDoc(docRef).then((d)=>{
+    console.log(d.data().title)
+})
+```
+- Subscription à tout changement de ce livre.
+```js
+onSnapshot( docRef , (doc) => {
+    console.log(doc.data(), doc.id)
+})
+``` 
+- Modifier un champ du livre depuis la console de Firestore

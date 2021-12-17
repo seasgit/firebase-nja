@@ -12,7 +12,8 @@ import {
     query, 
     where,
     orderBy,
-    serverTimestamp
+    serverTimestamp,
+    getDoc
 } from 'firebase/firestore'
 
 
@@ -87,3 +88,18 @@ const dolist =  () => {
                             <p class='text-xs'>${b.author} | ${b.id }</p>`
     })
 }
+
+
+/*----
+//  get a single book by id  -
+*/
+const docRef = doc(db, 'books', 'cul4YjT17T6nCTctSz7p');
+// 1 to test in console
+    // getDoc(docRef).then((d)=>{
+    //     console.log(d.data().title)
+    // })
+//
+// 2. susbcribe for any change of this doc
+onSnapshot( docRef , (doc) => {
+    console.log(doc.data(), doc.id)
+})
