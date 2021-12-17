@@ -1,30 +1,29 @@
-# Firebase  - Requêtes
+# Firebase  - TimeStamp
 
-- Dans les imports : `query` et `where`
 
-## Query by author
+## dans la console : FireStore
+- on remove la collection `Books`
+
+## dans le script index.js
+- Dans les imports : `serverTimeStamp` et `where`
 
 ```js
-// référence d'un requête avec critère
-const q = query(colRef, where('author', '==', 'Fred Vargas'))
+// référence d'un requête par date de création
+const q = query(colRef, orderBy('createdAt', 'desc'))
 
-// Subscription à un écouteur de tout changement dans la collection
- onSnapshot( q, (snapshot) => {
-     // même code ensuite
- }
-```
 
-## Query by author and ordered 
+// lors de la soumission on crée un enregistrement avec date de création
 
-- Dans les imports : `orderby`
-```js
-// référence d'un requête par auteur ordonnée par title
- const q = query(colRef, where('author', '==', 'Fred Vargas'), orderBy('title', 'asc'))
+    addDoc(colRef, {
+        title: addBookForm.title.value,
+        author: addBookForm.author.value,
+        createdAt: serverTimestamp()
+
  ```
-## Problème d'index
-![image](./captures/erreur_index.PNG)
 
-## Suivre le lien vers cet onglet
-Attendre le résultat. _(quelques minutes)_    
+ ## A l'exécution
+ - par défaut => liste vide
+ - Ajouter un livre => Il apparaît dans la liste
+ - ET dans Firestore
+ ![image](./captures/book_date.png)
 
-![image](./captures/popup_index.png)

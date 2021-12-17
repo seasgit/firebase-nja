@@ -11,7 +11,8 @@ import {
     onSnapshot, 
     query, 
     where,
-    orderBy
+    orderBy,
+    serverTimestamp
 } from 'firebase/firestore'
 
 
@@ -34,10 +35,8 @@ const db = getFirestore(app)
 const colRef = collection(db, 'books')
 
 
-// référence d'un requête par auteur
-// const q = query(colRef, where('author', '==', 'Fred Vargas'))
-// référence d'un requête par auteur ordonnée par title
- const q = query(colRef, where('author', '==', 'Fred Vargas'), orderBy('title', 'asc'))
+// référence d'un requête par date de création
+ const q = query(colRef, orderBy('createdAt', 'desc'))
 
 const list =  document.querySelector('.list')
 let books;
@@ -60,7 +59,8 @@ addBookForm.addEventListener('submit', (e) => {
     e.preventDefault()
     addDoc(colRef, {
         title: addBookForm.title.value,
-        author: addBookForm.author.value
+        author: addBookForm.author.value,
+        createdAt: serverTimestamp()
     }).then(()=> {
         addBookForm.reset()
     })
