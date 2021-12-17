@@ -8,7 +8,10 @@ import {
     addDoc,
     deleteDoc,
     doc,
-    onSnapshot
+    onSnapshot, 
+    query, 
+    where,
+    orderBy
 } from 'firebase/firestore'
 
 
@@ -31,10 +34,16 @@ const db = getFirestore(app)
 const colRef = collection(db, 'books')
 
 
+// référence d'un requête par auteur
+// const q = query(colRef, where('author', '==', 'Fred Vargas'))
+// référence d'un requête par auteur ordonnée par title
+ const q = query(colRef, where('author', '==', 'Fred Vargas'), orderBy('title', 'asc'))
+
 const list =  document.querySelector('.list')
 let books;
+
 // Subscription à un écouteur de tout changement dans la collection
- onSnapshot( colRef, (snapshot) => {
+ onSnapshot( q, (snapshot) => {
     books = []
     snapshot.docs.forEach(doc => {
         books.push({
