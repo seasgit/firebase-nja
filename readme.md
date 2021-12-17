@@ -22,7 +22,7 @@ const q = query(colRef, where('author', '==', 'Fred Vargas'))
  const q = query(colRef, where('author', '==', 'Fred Vargas'), orderBy('title', 'asc'))
  ```
 ## Problème d'index
-![image](./captures/erreur_index.png)
+![image](./captures/erreur_index.PNG)
 
 ## Suivre le lien vers cet onglet
 Attendre le résultat. _(quelques minutes)_    
