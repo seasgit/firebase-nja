@@ -38,3 +38,7 @@ git branch -a
 # on revient sur branch-1
 git branch branch-1
 ```
+## pushing branch
+```bash
+ git push --set-upstream origin branch-2
+```
